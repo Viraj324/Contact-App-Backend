@@ -1,0 +1,134 @@
+Create a user with api 
+http://localhost:5000/api/users/register (Post)
+body - {userName , email, password}
+       |
+       |
+       |
+       \/
+Login that user with the registered user 
+http://localhost:5000/api/users/login   (POST)
+body - {email,password}
+This generates a access token 
+       |
+       |
+       |
+       \/
+Take this token 
+http://localhost:5000/api/contacts/ (get)
+Put the token in Auth ---> berar 
+This in turn returns the contacts that have been created by the particular logged in user
+body = {
+  "name" : "Raj Sonawane",
+  "email" : "virajssonawane324@gmail.com",
+  "phone" : "123456896"
+}
+       |
+       |
+       |
+       \/
+Take this token 
+http://localhost:5000/api/contacts/ (post)
+Put the token in Auth ---> berar 
+Creates a new contact...
+body = {
+  "name" : "Raj Sonawane",
+  "email" : "virajssonawane324@gmail.com",
+  "phone" : "123456896"
+}
+
+
+Respone :- 
+{
+  "user_id": "65d2f189fcb7634857b3adbd", //user with id has created a new contact 
+  "name": "Raj Sonawane",
+  "email": "virajssonawane324@gmail.com",
+  "phone": "123456896", //Contact Details 
+  "_id": "65d2f769911f1d3dc0c7db78",
+  "createdAt": "2024-02-19T06:38:33.192Z",
+  "updatedAt": "2024-02-19T06:38:33.192Z",
+  "__v": 0
+}
+New contact creacted
+{
+  "user_id": "65d2f189fcb7634857b3adbd",
+  "name": "Vir Sonawane",
+  "email": "virajssonawane324.pict@gmail.com",
+  "phone": "123456896",
+  "_id": "65d2f91a911f1d3dc0c7db7a",
+  "createdAt": "2024-02-19T06:45:46.670Z",
+  "updatedAt": "2024-02-19T06:45:46.670Z",
+  "__v": 0
+}
+        |
+       |
+       |
+       \/
+
+
+http://localhost:5000/api/contacts/ (Get)
+Put the token in Auth ---> berar 
+This in turn returns the contacts that have been created by the particular logged in user
+[
+  {
+    "_id": "65d2f769911f1d3dc0c7db78",
+    "user_id": "65d2f189fcb7634857b3adbd",
+    "name": "Raj Sonawane",
+    "email": "virajssonawane324@gmail.com",
+    "phone": "123456896",
+    "createdAt": "2024-02-19T06:38:33.192Z",
+    "updatedAt": "2024-02-19T06:38:33.192Z",
+    "__v": 0
+  },
+  {
+    "_id": "65d2f91a911f1d3dc0c7db7a",
+    "user_id": "65d2f189fcb7634857b3adbd",
+    "name": "Vir Sonawane",
+    "email": "virajssonawane324.pict@gmail.com",
+    "phone": "123456896",
+    "createdAt": "2024-02-19T06:45:46.670Z",
+    "updatedAt": "2024-02-19T06:45:46.670Z",
+    "__v": 0
+  }
+]
+
+
+----------------------------------------------------------
+To update a contact : 
+http://localhost:5000/api/contacts/65d2f91a911f1d3dc0c7db7a (PUT) finding user by id
+old body : 
+{
+  "name" : "Vir Sonawane",
+  "email" : "virajssonawane324.pict@gmail.com",
+  "phone" : "123456896"
+}
+
+Updated body : 
+{
+  "name" : "Piyush Sonawane",
+  "email" : "virajssonawane324.pict@gmail.com",
+  "phone" : "123456896"
+}
+
+
+Response :
+{
+  "_id": "65d2f91a911f1d3dc0c7db7a",
+  "user_id": "65d2f189fcb7634857b3adbd",
+  "name": "Piysuh Sonawane",
+  "email": "virajssonawane324.pict@gmail.com",
+  "phone": "123456896",
+  "createdAt": "2024-02-19T06:45:46.670Z",
+  "updatedAt": "2024-02-19T06:53:55.604Z",
+  "__v": 0
+}
+------------------------------------------------------
+To delete a contact 
+http://localhost:5000/api/contacts/65d2f91a911f1d3dc0c7db7a (delete)
+
+
+http://localhost:5000/api/contacts/65d2f91a911f1d3dc0c7db7a (Get)
+{
+  "title": "Not Error",
+  "message": "Contact Not Found....",
+  "stackTrace": "Error: Contact Not Found....\n    at F:\\Projects\\mycontacts-backend\\controllers\\contactController.js:46:15\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)"
+}
